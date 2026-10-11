@@ -1,0 +1,199 @@
+AZ MİLLİ TƏCHİZAT — CODEX TƏHVİL SƏNƏDİ
+Son yenilənmə: 11 oktyabr 2026
+Repo: https://github.com/Matlab02/azmillitechizat
+Canlı sayt: https://azmillitechizat.az/
+Admin panel: https://azmillitechizat.az/admin.html
+
+======================================================================
+1. NÖVBƏTİ CODEX ÜÇÜN QISA PROMPT
+======================================================================
+
+Bu repo AZ Milli Təchizat saytının production mənbə kodudur. İşə başlamazdan
+əvvəl bu CODEX_HANDOFF.txt faylını, README.md, DESIGN.md və UX-CONTRACT.md
+sənədlərini tam oxu. Mövcud dizaynı və Azərbaycan dilində interfeysi qoru.
+Frontend dəyişikliklərindən sonra `node scripts/build-bundle.mjs` işlət, çünki
+canlı HTML səhifələri assets/js/app.bundle.js faylını istifadə edir. Məxfi
+server və databaza məlumatlarını repoya yazma. Dəyişiklikləri əvvəl lokal,
+sonra canlı saytda desktop və mobil ölçüdə yoxla.
+
+======================================================================
+2. TEXNOLOGİYA VƏ ARXİTEKTURA
+======================================================================
+
+- Frontend: HTML, CSS və vanilla JavaScript.
+- Backend: PHP 8 və PDO.
+- Databaza: MySQL/MariaDB, utf8mb4.
+- Production JS: assets/js/app.bundle.js.
+- Mənbə modulları: assets/js/api.js, storage.js, ui.js, pages.js, admin.js.
+- Public API: api/index.php.
+- DB sxemi və ilkin seed: api/install.php.
+- Məxfi konfiqurasiya public web root-dan kənarda app_private/config.php-dədir.
+- Public məhsul şəkilləri uploads/media altında, müraciət əlavələri isə
+  app_private/uploads altında saxlanılır.
+- Sayt ayarları azmt_site_settings, footer keçidləri azmt_footer_links
+  cədvəlindədir.
+
+======================================================================
+3. TAMAMLANMIŞ İŞLƏR
+======================================================================
+
+PUBLIC SAYT
+
+- Ana səhifə, kateqoriya, məhsul, axtarış, səbət, qiymət sorğusu, təsdiq,
+  brendlər, haqqımızda və əlaqə səhifələri hazırlanıb.
+- Dizayn təqdim edilmiş AZ Milli Təchizat maketinə uyğun responsive qurulub.
+- Real WebP məhsul və hero şəkilləri, lazy-loading və uzunmüddətli statik keş
+  qaydaları əlavə olunub.
+- Məhsul axtarışı, kateqoriya/brend/qiymət filtrləri və çeşidləmə işləyir.
+- Məhsullar FIXED_PRICE, REQUEST_ONLY və HYBRID qiymət rejimlərini dəstəkləyir.
+- Brend məcburi deyil; məhsul brendsiz yaradıla bilər.
+- Səbət localStorage-da saxlanılır. Köhnə demo slug ID-ləri canlı databaza
+  ID-lərinə avtomatik çevrilir; cart.html işləyir.
+- Qiymət sorğusunda fayl əlavə etmək mümkündür.
+- Əlaqə formasında fayl əlavə etmək mümkündür və telefon məcburidir.
+
+ADMIN PANEL
+
+- Username/şifrə ilə giriş, PHP session, CSRF qoruması, rol yoxlaması,
+  uğursuz giriş limitlənməsi və audit logları var.
+- Məhsul CRUD: kateqoriya, istəyə görə brend, qiymət rejimi, stok, təsvir,
+  material, rəng, xüsusiyyətlər, variantlar və şəkil.
+- Kateqoriya və brend CRUD-u var. Silmə arxivləmə (soft delete) kimi işləyir.
+- Məhsul, kateqoriya və brend üçün JPG/JPEG/PNG/WEBP şəkil yükləmə,
+  önizləmə, zoom, 90 dərəcə fırlatma və crop/redaktə sistemi var.
+- Qiymət sorğuları və əlaqə mesajları admin paneldə görünür, status dəyişir.
+- Admin istifadəçiləri və rolları idarə olunur.
+- Demo admin göstəricisi public ana səhifədən çıxarılıb.
+
+SAYT MƏZMUNUNUN İDARƏSİ
+
+- Admin paneldə “Sayt və footer” bölməsi 6 məzmun blokuna və 51 sahəyə
+  genişləndirilib.
+- Sayt adı, tagline, loqo, loqo alt mətni, üst panel mətnləri və axtarış
+  placeholder-i databazada saxlanılır.
+- Telefon, e-poçt, ünvan və WhatsApp databazadan gəlir.
+- Ana səhifənin hero mətnləri, bölmə başlıqları və 4 üstünlük bloku idarə olunur.
+- Brendlər səhifəsinin başlıq və giriş mətni idarə olunur.
+- Haqqımızda səhifəsinin hero, iki əsas abzası və üç fakt bloku idarə olunur.
+- Əlaqə səhifəsinin başlıq, giriş və forma başlığı idarə olunur.
+- Footer təsviri, copyright və qruplaşdırılmış footer keçidləri idarə olunur.
+- Loqo admin şəkil redaktorundan yüklənir və header/footer-də göstərilir.
+- Ayarların bütün standart dəyərləri azmt_site_settings cədvəlinə avtomatik
+  INSERT IGNORE ilə yazılır; yalnız kod fallback-i deyil.
+- Admin ayarı yadda saxlayanda eyni brauzerdə açıq public tablar storage eventi
+  ilə yenilənir. Digər ziyarətçilər no-store bootstrap ilə yeni məlumatı alır.
+
+BACKEND VƏ DATABAZA
+
+- Cədvəllər: azmt_admin_users, azmt_media_files, azmt_categories,
+  azmt_brands, azmt_products, azmt_product_images, azmt_product_specs,
+  azmt_product_variants, azmt_quote_requests, azmt_quote_items,
+  azmt_quote_attachments, azmt_contact_messages, azmt_contact_attachments,
+  azmt_site_settings, azmt_footer_links, azmt_audit_logs, azmt_migrations.
+- Input validation, MIME yoxlaması, ölçü limitləri, prepared statements,
+  password_hash/password_verify və origin guard tətbiq olunub.
+- API cavabları no-store-dur və server xətaları istifadəçiyə daxili məlumat
+  göstərmir.
+
+======================================================================
+4. SON YOXLAMA NƏTİCƏLƏRİ
+======================================================================
+
+- Canlı API health: işləyir.
+- Canlı public bootstrap: databaza kataloqu və bütün settings sahələri gəlir.
+- Admin login: işləyir.
+- “Sayt və footer”: 6 bölmə, 51 input/textarea və loqo redaktoru işləyir.
+- Səbət: canlı saytda məhsul əlavə etmə və cart.html göstərilməsi yoxlanılıb.
+- Haqqımızda və Əlaqə: 390x844 mobil ölçüdə horizontal overflow yoxdur.
+- Əlaqə telefon sahəsi required-dır.
+- 11 public/admin HTML səhifəsinin hamısı HTTP 200 qaytarır.
+- Browser console JavaScript xətası: yoxdur.
+- Frontend premium strict audit: 0 xəta, 0 xəbərdarlıq.
+
+======================================================================
+5. QALAN / TÖVSİYƏ OLUNAN İŞLƏR
+======================================================================
+
+YÜKSƏK PRİORİTET
+
+1. Hazırda istifadə olunan admin şifrəsini daha güclü, unikal şifrə ilə
+   dəyişmək və onu parol menecerində saxlamaq.
+2. Production quraşdırması artıq bitdiyi üçün serverdə api/install.php-ni
+   silmək və ya web server səviyyəsində bloklamaq.
+3. Databaza və app_private/uploads üçün avtomatik gündəlik backup və bərpa
+   sınağı qurmaq.
+
+ORTA PRİORİTET
+
+4. Qiymət sorğusu və əlaqə mesajı gələndə e-poçt bildirişi əlavə etmək.
+5. Admin paneldə əlavə edilmiş faylların təhlükəsiz, autentifikasiyalı download
+   endpoint-i və müraciət detalları ekranını təkmilləşdirmək.
+6. Məhsul üçün birdən çox şəkil qalereyasını admin UI-da tam idarə etmək.
+7. Admin siyahılarında pagination, tarix/status filtrləri və CSV export əlavə
+   etmək.
+8. SEO üçün dinamik meta title/description, canonical URL, sitemap.xml,
+   robots.txt və Product/Organization structured data əlavə etmək.
+
+AŞAĞI / GƏLƏCƏK PRİORİTET
+
+9. Sevimlilər funksiyasını daimi saxlama və ayrıca səhifə ilə tamamlamaq.
+10. Avtomatlaşdırılmış PHP integration və browser E2E testləri qurmaq.
+11. Deploy-u manual FTP əvəzinə GitHub Actions/SFTP ilə avtomatlaşdırmaq.
+12. Şəkillərin server tərəfində avtomatik WebP/AVIF variantlarının yaradılması
+    və orphan media təmizləmə işi əlavə etmək.
+
+Bu siyahı yeni tələb deyil; mövcud production sistemini daha təhlükəsiz və
+idarəolunan etmək üçün tövsiyə olunan növbəti mərhələlərdir.
+
+======================================================================
+6. LOKAL İŞ VƏ BUILD
+======================================================================
+
+Tələb: Node.js və PHP 8 + MySQL.
+
+JS syntax yoxlaması:
+
+  node --check assets/js/api.js
+  node --check assets/js/storage.js
+  node --check assets/js/ui.js
+  node --check assets/js/pages.js
+  node --check assets/js/admin.js
+
+Bundle yaratmaq:
+
+  node scripts/build-bundle.mjs
+
+Vacib: source modulları dəyişdirib bundle yaratmadan deploy etmə.
+
+Server quraşdırması üçün api/config.example.php-dən nümunə götür, amma real
+DB istifadəçisi, parol, install token və hosting girişlərini heç vaxt Git-ə
+commit etmə. Canlı giriş məlumatları bu sənəddə qəsdən yoxdur.
+
+======================================================================
+7. ƏSAS FAYLLAR
+======================================================================
+
+- README.md: quraşdırma və ümumi imkanlar.
+- DESIGN.md: vizual istiqamət və design tokenləri.
+- UX-CONTRACT.md: davranış, validation və responsive müqaviləsi.
+- api/bootstrap.php: konfiqurasiya, session, təhlükəsizlik və upload köməkçiləri.
+- api/index.php: public/admin API route-ları və settings mapping.
+- api/install.php: schema və ilkin seed.
+- assets/js/storage.js: bootstrap, cart və köhnə cart ID miqrasiyası.
+- assets/js/pages.js: public səhifə renderləri və hadisələr.
+- assets/js/admin.js: admin panel, CRUD və content settings formu.
+- assets/js/ui.js: header, footer, loqo və ortaq UI komponentləri.
+- assets/css/styles.css: bütün public/admin responsive stillər.
+- scripts/build-bundle.mjs: production JS bundle generatoru.
+
+======================================================================
+8. GIT QAYDASI
+======================================================================
+
+- main branch production mənbəyidir.
+- api/config.php, app_private, uploads, work, output ZIP-ləri və credential
+  faylları commit olunmamalıdır.
+- Dəyişiklikdən əvvəl git status, sonra syntax/build/audit və canlı smoke test
+  aparılmalıdır.
+- Məxfi məlumat görünsə dərhal commit-i dayandır və credential-i rotate et.
+

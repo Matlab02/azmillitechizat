@@ -1,0 +1,20 @@
+# Local/private configuration
+/api/config.php
+/app_private/
+*.env
+.env.*
+
+# Runtime uploads and logs
+/uploads/
+*.log
+
+# Local work and generated deployment archives
+/work/
+/outputs/
+*.zip
+
+# Tooling
+/node_modules/
+.DS_Store
+Thumbs.db
+

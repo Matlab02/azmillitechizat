@@ -1,0 +1,38 @@
+{
+  "categories": [
+    {"id":"faucets","name":"Su kranları","icon":"faucet","description":"Mətbəx və lavabo üçün qarışdırıcılar"},
+    {"id":"showers","name":"Duş sistemləri","icon":"shower-head","description":"Rahat və qənaətli duş həlləri"},
+    {"id":"toilets","name":"Unitazlar","icon":"toilet","description":"Asma və döşəmə modelləri"},
+    {"id":"pipes","name":"Su boruları","icon":"pipe","description":"İsti və soyuq su xətləri"},
+    {"id":"fittings","name":"Fitinqlər","icon":"fittings","description":"Birləşdiricilər və keçidlər"},
+    {"id":"heaters","name":"Su qızdırıcıları","icon":"heater","description":"Elektrik su qızdırıcıları"},
+    {"id":"accessories","name":"Santexnika aksesuarları","icon":"accessory","description":"Montaj və istifadə aksesuarları"}
+  ],
+  "brands": [
+    {"id":"grohe","name":"GROHE","count":12,"tone":"#064F9E"},
+    {"id":"eca","name":"E.C.A.","count":85,"tone":"#198BD1"},
+    {"id":"vitra","name":"VitrA","count":110,"tone":"#4B5563"},
+    {"id":"serel","name":"SEREL","count":70,"tone":"#1381C4"},
+    {"id":"kale","name":"Kale","count":120,"tone":"#173A70"},
+    {"id":"creavit","name":"creavit","count":130,"tone":"#334155"},
+    {"id":"roca","name":"Roca","count":150,"tone":"#0878E8"},
+    {"id":"ppr","name":"PPR","count":90,"tone":"#25A46F"},
+    {"id":"ariston","name":"ARISTON","count":45,"tone":"#D9363E"},
+    {"id":"uponor","name":"uponor","count":70,"tone":"#0A67C7"},
+    {"id":"wavin","name":"wavin","count":120,"tone":"#1269C7"},
+    {"id":"rehau","name":"REHAU","count":95,"tone":"#D62D3B"}
+  ],
+  "products": [
+    {"id":"grohe-eurostyle","name":"GROHE Eurostyle Lavabo kranı","categoryId":"faucets","brandId":"grohe","priceMode":"HYBRID","price":120,"stock":15,"material":"Latun","color":"Xrom","art":"faucet","featured":true,"rating":4.8,"reviewCount":24,"description":"Müasir dizaynlı, yüksək keyfiyyətli xrom örtüklü lavabo qarışdırıcısı. Yumşaq idarəetmə və suya qənaət üçün hazırlanıb.","specs":{"Seriya":"Eurostyle","Növ":"Lavabo kranı","Material":"Latun","Rəng":"Xrom","Zəmanət":"5 il"},"variants":["Xrom","Mat qara"]},
+    {"id":"eca-trend","name":"E.C.A. Trend Lavabo kranı","categoryId":"faucets","brandId":"eca","priceMode":"FIXED_PRICE","price":95,"stock":22,"material":"Latun","color":"Xrom","art":"faucet","featured":true,"rating":4.6,"reviewCount":18,"description":"Gündəlik istifadə üçün praktik və davamlı lavabo qarışdırıcısı.","specs":{"Seriya":"Trend","Növ":"Lavabo kranı","Material":"Latun","Rəng":"Xrom","Zəmanət":"3 il"},"variants":["Xrom"]},
+    {"id":"vitra-flow","name":"VitrA Flow Lavabo kranı","categoryId":"faucets","brandId":"vitra","priceMode":"REQUEST_ONLY","price":null,"stock":8,"material":"Latun","color":"Xrom","art":"faucet","featured":false,"rating":4.7,"reviewCount":11,"description":"Minimalist forma və rahat istifadə üçün yumşaq açılıb-bağlanma mexanizmi.","specs":{"Seriya":"Flow","Növ":"Lavabo kranı","Material":"Latun","Rəng":"Xrom","Zəmanət":"5 il"},"variants":["Xrom","Qrafit"]},
+    {"id":"grohe-shower","name":"GROHE Tempesta Duş sistemi","categoryId":"showers","brandId":"grohe","priceMode":"HYBRID","price":450,"stock":6,"material":"Paslanmaz polad","color":"Xrom","art":"shower","featured":true,"rating":4.9,"reviewCount":31,"description":"Yuxarı və əl duşu ilə tam duş sistemi. Rahat temperatur idarəetməsi.","specs":{"Seriya":"Tempesta","Növ":"Duş sistemi","Material":"Paslanmaz polad","Rəng":"Xrom","Zəmanət":"5 il"},"variants":["Standart","Termostatlı"]},
+    {"id":"serel-smart","name":"SEREL Smart Asma unitaz","categoryId":"toilets","brandId":"serel","priceMode":"FIXED_PRICE","price":320,"stock":8,"material":"Keramika","color":"Ağ","art":"toilet","featured":true,"rating":4.7,"reviewCount":16,"description":"Gizli montaj üçün kompakt, asma keramika unitaz.","specs":{"Seriya":"Smart","Növ":"Asma unitaz","Material":"Keramika","Rəng":"Ağ","Zəmanət":"10 il"},"variants":["Qapaqlı","Qapaqsız"]},
+    {"id":"vitra-s20","name":"VitrA S20 Unitaz","categoryId":"toilets","brandId":"vitra","priceMode":"FIXED_PRICE","price":320,"stock":12,"material":"Keramika","color":"Ağ","art":"toilet","featured":false,"rating":4.5,"reviewCount":9,"description":"Sadə xətlərə malik döşəmə tipli sanitar keramika.","specs":{"Seriya":"S20","Növ":"Döşəmə unitaz","Material":"Keramika","Rəng":"Ağ","Zəmanət":"10 il"},"variants":["Standart"]},
+    {"id":"kale-basic","name":"Kale Basic Unitaz","categoryId":"toilets","brandId":"kale","priceMode":"REQUEST_ONLY","price":null,"stock":5,"material":"Keramika","color":"Ağ","art":"toilet","featured":false,"rating":4.4,"reviewCount":7,"description":"Ailə istifadəsi üçün rahat və dayanıqlı unitaz dəsti.","specs":{"Seriya":"Basic","Növ":"Döşəmə unitaz","Material":"Keramika","Rəng":"Ağ","Zəmanət":"5 il"},"variants":["Standart"]},
+    {"id":"ppr-boru-20","name":"PPR Boru Ø20","categoryId":"pipes","brandId":"ppr","priceMode":"FIXED_PRICE","price":2.5,"stock":450,"material":"Plastik","color":"Yaşıl","art":"pipe","featured":true,"rating":4.8,"reviewCount":42,"description":"İsti və soyuq su xətləri üçün möhkəm PPR boru.","specs":{"Diametr":"20 mm","Uzunluq":"4 m","Material":"PPR","Rəng":"Yaşıl","Təzyiq":"PN20"},"variants":["Ø20","Ø25","Ø32"]},
+    {"id":"metal-fitting","name":"Metal Mufta 1/2","categoryId":"fittings","brandId":"eca","priceMode":"FIXED_PRICE","price":5.2,"stock":210,"material":"Pirinç","color":"Metal","art":"fitting","featured":true,"rating":4.6,"reviewCount":20,"description":"Dişli boru birləşmələri üçün davamlı pirinç mufta.","specs":{"Ölçü":"1/2 düym","Material":"Pirinç","Növ":"Dişli","Zəmanət":"1 il"},"variants":["1/2 düym","3/4 düym"]},
+    {"id":"ariston-pro","name":"Ariston Pro1 Su qızdırıcısı","categoryId":"heaters","brandId":"ariston","priceMode":"HYBRID","price":380,"stock":4,"material":"Polad","color":"Ağ","art":"heater","featured":true,"rating":4.7,"reviewCount":28,"description":"50 litr tutumlu, enerjiyə qənaətli elektrik su qızdırıcısı.","specs":{"Həcm":"50 litr","Güc":"1.5 kW","Material":"Polad","Rəng":"Ağ","Zəmanət":"3 il"},"variants":["50 litr","80 litr"]},
+    {"id":"roca-accessory","name":"Roca Hamam aksesuar dəsti","categoryId":"accessories","brandId":"roca","priceMode":"REQUEST_ONLY","price":null,"stock":9,"material":"Metal","color":"Xrom","art":"accessory","featured":false,"rating":4.5,"reviewCount":6,"description":"Hamam üçün bir-birini tamamlayan xrom aksesuarlar.","specs":{"Dəst":"5 parça","Material":"Metal","Rəng":"Xrom","Zəmanət":"2 il"},"variants":["5 parça"]}
+  ]
+}
