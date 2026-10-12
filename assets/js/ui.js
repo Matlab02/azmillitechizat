@@ -1,5 +1,5 @@
-import { cartCount, addToCart, getSettings, getFooterLinks } from "./storage.js?v=20261011d";
-import { productArt, heroArt, iconFallback } from "./art.js?v=20261011d";
+import { cartCount, addToCart, getSettings, getFooterLinks } from "./storage.js?v=20261012a";
+import { productArt, heroArt, iconFallback } from "./art.js?v=20261012a";
 
 export const qs = (selector, root = document) => root.querySelector(selector);
 export const qsa = (selector, root = document) => [...root.querySelectorAll(selector)];

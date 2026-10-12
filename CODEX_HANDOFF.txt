@@ -1,5 +1,5 @@
 AZ MİLLİ TƏCHİZAT — CODEX TƏHVİL SƏNƏDİ
-Son yenilənmə: 11 oktyabr 2026
+Son yenilənmə: 12 oktyabr 2026
 Repo: https://github.com/Matlab02/azmillitechizat
 Canlı sayt: https://azmillitechizat.az/
 Admin panel: https://azmillitechizat.az/admin.html
@@ -61,7 +61,9 @@ ADMIN PANEL
 - Kateqoriya və brend CRUD-u var. Silmə arxivləmə (soft delete) kimi işləyir.
 - Məhsul, kateqoriya və brend üçün JPG/JPEG/PNG/WEBP şəkil yükləmə,
   önizləmə, zoom, 90 dərəcə fırlatma və crop/redaktə sistemi var.
-- Qiymət sorğuları və əlaqə mesajları admin paneldə görünür, status dəyişir.
+- Qiymət sorğuları və əlaqə mesajları admin paneldə görünür, status dəyişir və
+  təhlükəli əməliyyat təsdiqindən sonra həmişəlik silinə bilir. Silinən
+  müraciətin bağlı databaza qeydləri və private əlavələri də təmizlənir.
 - Admin istifadəçiləri və rolları idarə olunur.
 - Demo admin göstəricisi public ana səhifədən çıxarılıb.
 

@@ -1,4 +1,4 @@
-import { api, setCsrf, ensureCsrf } from "./api.js?v=20261011d";
+import { api, setCsrf, ensureCsrf } from "./api.js?v=20261012a";
 
 const CART_KEY = "azmt.cart.v1";
 const defaults = {

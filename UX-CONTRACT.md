@@ -27,7 +27,7 @@
 | Form | Shared field/form styles + page controllers | `pages.js`, `admin.js` | quote, contact, login, CRUD | validation/browser |
 | Toast | `ui.js#toast` | `assets/js/ui.js` | success, info, error | live region/browser |
 | Dialog | `ui.js#openModal` | `assets/js/ui.js` | edit, archive confirmation | focus/Escape/browser |
-| CRUD | Authenticated admin API | `api/index.php` | product, category, brand, user | API/browser |
+| CRUD | Authenticated admin API | `api/index.php` | product, category, brand, user, quote, contact | API/browser |
 | File upload | API upload helpers + image editor | `bootstrap.php`, `admin.js` | public image, private attachment | type/size/browser |
 
 ## Navigation and data behavior
@@ -47,6 +47,7 @@
 | Admin login | disabled busy button | dashboard | inline error; preserve username |
 | Create/edit entity | stable modal action | stay + toast | preserve modal and image preview |
 | Archive entity | warning dialog | stay + toast | conflict/error toast; no data loss |
+| Permanently delete quote/contact | danger dialog with Cancel focused | stay + toast; refresh list/stats | keep dialog open; retry or cancel |
 | Quote/contact | disabled busy button | confirmation/toast | inline/API error; preserve inputs |
 | Image edit/upload | local preview | media attached | type/size error; preserve form |
 | Session expiry | app-owned 401 state | login screen | re-authenticate |
@@ -63,7 +64,8 @@
 - Mutations require CSRF; admin endpoints require session and role checks.
 - Passwords are hashed; repeated failed logins create a temporary lockout.
 - No native `alert`, `confirm`, or `prompt`; owned modal/toast primitives are canonical.
-- Delete-looking actions are soft archives. A referenced category cannot be archived.
+- Product, category, and brand removal uses soft archive. A referenced category cannot be archived.
+- Quote requests and contact messages use permanent deletion after an explicit danger confirmation. Related database rows cascade, private attachments are removed from protected storage, the operation is audited, and no Undo is offered.
 - Server messages never expose secrets, SQL, or filesystem paths.
 
 ## Verification

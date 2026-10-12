@@ -1,5 +1,5 @@
-import { loadCatalog, getCart, updateCart, clearCart, getContent, getSettings, submitQuote, submitContact } from "./storage.js?v=20261011d";
-import { shell, heroArt, productArt, productCard, categoryArt, breadcrumb, priceMarkup, money, escapeHTML, icon, qs, qsa, bindGlobalUI, initIcons, toast, updateCartBadge, emptyState } from "./ui.js?v=20261011d";
+import { loadCatalog, getCart, updateCart, clearCart, getContent, getSettings, submitQuote, submitContact } from "./storage.js?v=20261012a";
+import { shell, heroArt, productArt, productCard, categoryArt, breadcrumb, priceMarkup, money, escapeHTML, icon, qs, qsa, bindGlobalUI, initIcons, toast, updateCartBadge, emptyState } from "./ui.js?v=20261012a";
 
 const params = () => new URLSearchParams(location.search);
 const byId = (items, id) => items.find((item) => item.id === id);

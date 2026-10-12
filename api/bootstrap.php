@@ -199,6 +199,22 @@ function azmt_store_attachment(array $file, string $context): array
     return ['path'=>$path,'name'=>mb_substr(basename((string)$file['name']),0,255),'mime'=>$mime,'size'=>(int)$file['size']];
 }
 
+function azmt_delete_private_files(array $paths): int
+{
+    $configuredRoot = (string)(azmt_config()['private_upload_dir'] ?? '');
+    $root = $configuredRoot !== '' ? realpath($configuredRoot) : false;
+    if ($root === false) return 0;
+
+    $prefix = rtrim($root, '/\\') . DIRECTORY_SEPARATOR;
+    $deleted = 0;
+    foreach ($paths as $path) {
+        $resolved = realpath((string)$path);
+        if ($resolved === false || !is_file($resolved) || !str_starts_with($resolved, $prefix)) continue;
+        if (@unlink($resolved)) $deleted++;
+    }
+    return $deleted;
+}
+
 function azmt_store_image(array $file, string $alt = ''): array
 {
     if (($file['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_OK) azmt_error(azmt_upload_error_message((int)($file['error'] ?? UPLOAD_ERR_NO_FILE)), 422);

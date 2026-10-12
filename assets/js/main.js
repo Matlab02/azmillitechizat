@@ -1,5 +1,5 @@
-import { renderPublic } from "./pages.js?v=20261011d";
-import { renderAdmin } from "./admin.js?v=20261011d";
+import { renderPublic } from "./pages.js?v=20261012a";
+import { renderAdmin } from "./admin.js?v=20261012a";
 
 const page = document.body.dataset.page || "home";
 

@@ -7,7 +7,7 @@ const PRODUCT_IMAGE_TYPES = new Set([
   "heater",
   "accessory",
 ]);
-const ASSET_VERSION = "20261011d";
+const ASSET_VERSION = "20261012a";
 
 const ICON_FALLBACKS = {
   "arrow-left": "←",
