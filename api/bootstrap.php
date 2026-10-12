@@ -125,8 +125,35 @@ function azmt_origin_guard(): void
 {
     $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
     if (!$origin) return;
-    $allowed = rtrim((string)(azmt_config()['app_url'] ?? ''), '/');
-    if ($allowed && !hash_equals($allowed, rtrim($origin, '/'))) azmt_error('Sorğu mənbəyi qəbul edilmir.', 403);
+
+    $config = azmt_config();
+    $allowedOrigins = $config['allowed_origins'] ?? [];
+    if (is_string($allowedOrigins)) $allowedOrigins = [$allowedOrigins];
+    if (!is_array($allowedOrigins)) $allowedOrigins = [];
+    if (!empty($config['app_url'])) $allowedOrigins[] = (string)$config['app_url'];
+
+    $normalize = static function (string $value): ?array {
+        $parts = parse_url(trim($value));
+        if (!is_array($parts) || empty($parts['scheme']) || empty($parts['host'])) return null;
+        $scheme = strtolower((string)$parts['scheme']);
+        if (!in_array($scheme, ['http', 'https'], true)) return null;
+        return [
+            'scheme' => $scheme,
+            'host' => strtolower(rtrim((string)$parts['host'], '.')),
+            'port' => isset($parts['port']) ? (int)$parts['port'] : ($scheme === 'https' ? 443 : 80),
+        ];
+    };
+
+    $candidate = $normalize($origin);
+    foreach ($allowedOrigins as $allowedOrigin) {
+        $allowed = $normalize((string)$allowedOrigin);
+        if (!$candidate || !$allowed) continue;
+        $candidateHost = preg_replace('/^www\./i', '', $candidate['host']);
+        $allowedHost = preg_replace('/^www\./i', '', $allowed['host']);
+        if ($candidate['scheme'] === $allowed['scheme'] && $candidate['port'] === $allowed['port'] && hash_equals($allowedHost, $candidateHost)) return;
+    }
+
+    if ($allowedOrigins) azmt_error('Sorğu mənbəyi qəbul edilmir.', 403);
 }
 
 function azmt_audit(string $action, string $entity, ?string $entityId = null, array $details = []): void

@@ -3,6 +3,10 @@ declare(strict_types=1);
 
 return [
     'app_url' => 'https://azmillitechizat.az',
+    'allowed_origins' => [
+        'https://azmillitechizat.az',
+        'https://www.azmillitechizat.az',
+    ],
     'db' => [
         'host' => 'localhost',
         'port' => 3306,
