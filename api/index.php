@@ -110,7 +110,7 @@ if ($route === 'quote' && $method === 'POST') {
     try {
         $number=azmt_request_number();
         $stmt=$pdo->prepare('INSERT INTO azmt_quote_requests (request_no,full_name,phone,email,company,note) VALUES (?,?,?,?,?,?)');
-        $stmt->execute([$number,$name,azmt_clean_text($_POST['email']??'',190)?:null,azmt_clean_text($_POST['company']??'',190)?:null,azmt_clean_text($_POST['note']??'',10000)?:null]);
+        $stmt->execute([$number,$name,$phone,azmt_clean_text($_POST['email']??'',190)?:null,azmt_clean_text($_POST['company']??'',190)?:null,azmt_clean_text($_POST['note']??'',10000)?:null]);
         $quoteId=(int)$pdo->lastInsertId(); $total=0.0;
         $lookup=$pdo->prepare("SELECT id,name,price,price_mode FROM azmt_products WHERE id=? AND deleted_at IS NULL AND status='active'");
         $insert=$pdo->prepare('INSERT INTO azmt_quote_items (quote_id,product_id,product_name,quantity,unit_price,price_mode) VALUES (?,?,?,?,?,?)');
