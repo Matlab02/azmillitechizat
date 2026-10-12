@@ -28,6 +28,7 @@ uploads/media/          Public yüklənmiş şəkillər (serverdə yaradılır)
 ## Server quraşdırması
 
 1. `api/config.example.php` əsasında `app_private/config.php` yaradın və public web root-dan kənarda saxlayın.
+   `allowed_origins` siyahısına saytın istifadə olunan domen variantlarını (məsələn, həm əsas domeni, həm də `www` variantını) əlavə edin.
 2. `api/install.php` ünvanına `X-Install-Token` başlığı ilə POST göndərin. İstəyə görə ilk admin üçün `username`, `password`, `fullName` JSON sahələrini əlavə edin.
 3. Quraşdırmadan sonra `install.php` faylını serverdən silin.
 4. `api/index.php?route=health` və public `bootstrap` cavabını yoxlayın.
